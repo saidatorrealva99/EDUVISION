@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Apoderado extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'apoderados';
 
@@ -41,7 +43,7 @@ class Apoderado extends Model
         return $this->estudiantes()->wherePivot('activo', true);
     }
 
-        public function justificaciones(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function justificaciones(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Justificacion::class);
     }

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 
 class Estudiante extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'estudiantes';
 
@@ -63,12 +64,12 @@ class Estudiante extends Model
         return "{$this->apellidos}, {$this->nombres}";
     }
 
-        public function participaciones(): \Illuminate\Database\Eloquent\Relations\HasMany
+        public function participaciones(): HasMany
     {
         return $this->hasMany(Participacion::class);
     }
 
-    public function reconocimientos(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function reconocimientos(): HasMany
     {
         return $this->hasMany(Reconocimiento::class)->latest('fecha');
     }

@@ -17,7 +17,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'dni' => fake()->unique()->numerify('########'),           // 8 dígitos
+            'dni' => fake()->unique()->numerify('3#######'),           // adultos generados: 3xxxxxxx
             'nombres' => fake()->firstName(),
             'apellidos' => fake()->lastName().' '.fake()->lastName(),   // dos apellidos, como en Perú
             'email' => fake()->unique()->userName().'@horizonte.edu.pe',

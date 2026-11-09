@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@eduvision.test',
         ])->assignRole('administrador');
 
-        // Aquí iremos agregando los demás seeders (catálogos, personal, estudiantes...)
+        // 3. Datos del colegio (el orden importa: cada uno usa lo que creó el anterior)
+        $this->call([
+            CatalogosSeeder::class,
+            EstructuraAcademicaSeeder::class,
+            PersonalSeeder::class,
+            EstudiantesSeeder::class,
+        ]);
     }
 }
